@@ -8,16 +8,71 @@
  * @date 2014-07-25
  * @copyright  Copyright (c) 2010-2014 Luomor Inc. (http://www.luomor.com)
  */
-$code = $_GET["code"];
-$state = $_GET["state"];
+//define your token
+define("TOKEN", "weixin");
+$wechatObj = new wechatCallbackapiTest();
+$wechatObj->valid();
 
-$appid = "wx44d0e65f9951d33b";
-$secret = "5f1c5968f3b4978932cac17492f8da71";
-$grant_type = "authorization_code";
+class wechatCallbackapiTest {
+    public function valid() {
+        $echoStr = $_GET["echostr"];
 
-$url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=$grant_type";
-$content = file_get_contents($url);
+        //valid signature , option
+        if($this->checkSignature()){
+            echo $echoStr;
+            exit;
+        }
+    }
 
-$file = fopen("weixin.txt", "a+");
-fwrite($file, $content . "\n");
-fclose($file);
+    public function responseMsg() {
+        //get post data, May be due to the different environments
+        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+
+        //extract post data
+        if (!empty($postStr)) {
+            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $fromUsername = $postObj->FromUserName;
+            $toUsername = $postObj->ToUserName;
+            $keyword = trim($postObj->Content);
+            $time = time();
+            $textTpl = "<xml>
+							<ToUserName><![CDATA[%s]]></ToUserName>
+							<FromUserName><![CDATA[%s]]></FromUserName>
+							<CreateTime>%s</CreateTime>
+							<MsgType><![CDATA[%s]]></MsgType>
+							<Content><![CDATA[%s]]></Content>
+							<FuncFlag>0</FuncFlag>
+							</xml>";
+            if(!empty( $keyword )) {
+                $msgType = "text";
+                $contentStr = "Welcome to wechat world!";
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                echo $resultStr;
+            } else {
+                echo "Input something...";
+            }
+
+        } else {
+            echo "";
+            exit;
+        }
+    }
+
+    private function checkSignature() {
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"];
+
+        $token = TOKEN;
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+
+        if( $tmpStr == $signature ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
