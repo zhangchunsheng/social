@@ -18,6 +18,9 @@ $grant_type = "authorization_code";
 $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=$grant_type";
 $content = file_get_contents($url);
 
+$info = json_decode($content);
+echo "你好，" . $info->openid;
+
 $file = fopen("weixin.txt", "a+");
 fwrite($file, $content . "\n");
 fclose($file);
