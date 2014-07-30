@@ -1,5 +1,15 @@
 {
+    "name": "social/weixin",
+    "description": "weixin share",
+    "keywords": [
+        "weixin",
+        "oauth2",
+        "zf2"
+    ],
+    "homepage": "http://www.luomor.com/",
     "require": {
-        "league/oauth2-client": "~0.3"
+        "league/oauth2-client": "~0.3",
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3.*"
     }
 }
