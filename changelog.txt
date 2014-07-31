@@ -12,6 +12,9 @@
 2.新功能:增加zendframework框架
 3.新功能:更新.gitignore文件
 
+[social_1.0.0.1 2014-07-31 张春生]
+1.新功能:增加zendframework框架
+
 --备注分类
 1、新功能：
 2、Bug:
