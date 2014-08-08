@@ -16,7 +16,7 @@ $secret = "5f1c5968f3b4978932cac17492f8da71";
 $grant_type = "authorization_code";
 
 $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=$grant_type";
-$content = file_get_contents($url);
+$content = request($url);
 
 $info = json_decode($content);
 echo "你好，" . $info->openid;
