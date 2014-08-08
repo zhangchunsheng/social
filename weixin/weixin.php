@@ -23,4 +23,49 @@ echo "你好，" . $info->openid;
 
 $file = fopen("weixin.txt", "a+");
 fwrite($file, $content . "\n");
+
+$url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=" . $info->access_token . "&openid=" . $info->openid . "&lang=zh_CN";
+echo "<p/>";
+echo $url;
+echo "<p/>";
+$content = request($url);
+$info = json_decode($content);
+print_r($info);
+
+fwrite($file, $content . "\n");
 fclose($file);
+
+function request($url, $method = "GET", $post_fields = null, $header = array()) {
+    $ch = curl_init();
+
+    try {
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+
+        if($method == "POST") {
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+        }
+        $result = curl_exec($ch);
+
+        if(curl_error($ch)) {
+            error_log("access $url error:" . curl_error($ch));
+        }
+        curl_close($ch);
+    } catch(Exception $e) {
+        curl_close($ch);
+        throw $e;
+    }
+
+    if(empty($result)) {
+        return false;
+    }
+
+    return $result;
+}
