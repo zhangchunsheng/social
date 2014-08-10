@@ -26,12 +26,12 @@ msgstr "主页"
 msgid "All rights reserved."
 msgstr "All rights reserved."
 
-#: ../view/application/index/index.phtml:2
+#: ../view/weixin/index/index.phtml:2
 #, php-format
 msgid "Welcome to %sZend Framework 2%s"
 msgstr "欢迎使用%sZend Framework 2%s"
 
-#: ../view/application/index/index.phtml:3
+#: ../view/weixin/index/index.phtml:3
 #, php-format
 msgid ""
 "Congratulations! You have successfully installed the %sZF2 Skeleton "
@@ -42,15 +42,15 @@ msgstr ""
 "恭喜！您已经成功安装了%sZF2 Skeleton Application%s。您现在运行的Zend "
 "Framework的版本为%s。这个框架应用可以用作您创建自己的ZF2应用的起点。"
 
-#: ../view/application/index/index.phtml:4
+#: ../view/weixin/index/index.phtml:4
 msgid "Fork Zend Framework 2 on GitHub"
 msgstr "在GitHub中获取Zend Framework 2到您的应用"
 
-#: ../view/application/index/index.phtml:10
+#: ../view/weixin/index/index.phtml:10
 msgid "Follow Development"
 msgstr "关注开发"
 
-#: ../view/application/index/index.phtml:11
+#: ../view/weixin/index/index.phtml:11
 #, php-format
 msgid ""
 "Zend Framework 2 is under active development. If you are interested in "
@@ -63,15 +63,15 @@ msgstr ""
 "站有一个专门的ZF2入口，从这个入口可以进入ZF2的%swiki%s, %sdev blog%s, "
 "%sissue tracker%s等。这些是关注我们最新开发的好资源！"
 
-#: ../view/application/index/index.phtml:12
+#: ../view/weixin/index/index.phtml:12
 msgid "ZF2 Development Portal"
 msgstr "ZF2 开发入口"
 
-#: ../view/application/index/index.phtml:16
+#: ../view/weixin/index/index.phtml:16
 msgid "Discover Modules"
 msgstr "探索模块"
 
-#: ../view/application/index/index.phtml:17
+#: ../view/weixin/index/index.phtml:17
 #, php-format
 msgid ""
 "The community is working on developing a community site to serve as a "
@@ -82,15 +82,15 @@ msgstr ""
 "社区正在开发一个能够存储和展示ZF2模块的功能。这个项目可以在%son GitHub%s找"
 "到。这个网站现在已经包含了许多ZF2可用的模块。"
 
-#: ../view/application/index/index.phtml:18
+#: ../view/weixin/index/index.phtml:18
 msgid "Explore ZF2 Modules"
 msgstr "浏览ZF2模块"
 
-#: ../view/application/index/index.phtml:22
+#: ../view/weixin/index/index.phtml:22
 msgid "Help &amp; Support"
 msgstr "帮助 &amp; 支持"
 
-#: ../view/application/index/index.phtml:23
+#: ../view/weixin/index/index.phtml:23
 #, php-format
 msgid ""
 "If you need any help or support while developing with ZF2, you may reach us "
@@ -102,7 +102,7 @@ msgstr ""
 "%s。我们非常乐意收到您对于发布的公测版提问和反馈。或者，您也可以通"
 "过%smailing lists%s订阅并发布问题。"
 
-#: ../view/application/index/index.phtml:24
+#: ../view/weixin/index/index.phtml:24
 msgid "Ping us on IRC"
 msgstr "在IRC上ping我们"
 

@@ -8,7 +8,7 @@
  * @date 2014-07-31
  * @copyright  Copyright (c) 2014-2014 Luomor Inc. (http://www.luomor.com)
  */
-namespace Application;
+namespace Weixin;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
