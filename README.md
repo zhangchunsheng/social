@@ -3,6 +3,7 @@ social
 
 social app like weixin
 
+<pre>
 <VirtualHost *:80>
     ServerName social.luomor.org
 
@@ -20,3 +21,4 @@ social app like weixin
     ErrorLog /var/log/apache2/social-weixin_error_log
     CustomLog /var/log/apache2/social-weixin_access_log combined
 </VirtualHost>
+</pre>
