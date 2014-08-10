@@ -3,9 +3,7 @@ social
 
 social app like weixin
 
-<code>
-\<VirtualHost *:80\>
-
+<VirtualHost *:80>
     ServerName social.luomor.org
 
     DocumentRoot /home/zhang/dev/github/social/share/weixin/public
@@ -21,5 +19,23 @@ social app like weixin
 
     ErrorLog /var/log/apache2/social-weixin_error_log
     CustomLog /var/log/apache2/social-weixin_access_log combined
-\</VirtualHost\>
-</code>
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName weixin.didiwuliu.com
+
+    DocumentRoot /var/www/html/social/share/weixin/public
+    <Directory /var/www/html/social/share/weixin/public>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    SetEnv APPLICATION_ENV "development"
+
+    DirectoryIndex index.php
+
+    ErrorLog /var/log/http/social-weixin_error_log
+    CustomLog /var/log/http/social-weixin_access_log combined
+</VirtualHost>
