@@ -12,44 +12,23 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Weixin\Controller\Index' => 'Weixin\Controller\IndexController',
-            'Weixin\Controller\Weixin' => 'Weixin\Controller\WeixinController'
         ),
     ),
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'weixin' => array(
+                'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '/[:action]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
                     'defaults' => array(
                         'controller' => 'Weixin\Controller\Index',
                         'action'     => 'index',
                     ),
                 ),
             ),
-            'weixin' => array(
-                'type'    => 'segment',
-                'options' => array(
-                    'route'    => '/weixin[/:action][/:id]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => 'Weixin\Controller\Weixin',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'aliases' => array(
-            'translator' => 'MvcTranslator',
         ),
     ),
     'translator' => array(
@@ -63,29 +42,11 @@ return array(
         ),
     ),
     'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
-        'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'weixin/index/index' => __DIR__ . '/../view/weixin/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
-        ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
         'strategies' => array(
             'ViewJsonStrategy',
-        ),
-    ),
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-            ),
         ),
     ),
 );
