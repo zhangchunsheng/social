@@ -8,7 +8,7 @@
     ],
     "homepage": "http://www.luomor.com/",
     "require": {
-        "didiwuliu/oauth2-client": "~0.3",
+        "didiwuliu/oauth2-client": "0.3.*@dev",
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.6"
     }
