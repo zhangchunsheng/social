@@ -39,3 +39,22 @@ social app like weixin
     ErrorLog /var/log/httpd/social-weixin_error_log
     CustomLog /var/log/httpd/social-weixin_access_log combined
 </VirtualHost>
+
+<VirtualHost *:80>
+    ServerName 54.254.199.29
+
+    DocumentRoot /var/www/html
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    SetEnv APPLICATION_ENV "development"
+
+    DirectoryIndex index.php
+
+    ErrorLog /var/log/httpd/error_log
+    CustomLog /var/log/httpd/access_log combined
+</VirtualHost>
