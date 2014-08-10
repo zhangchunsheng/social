@@ -3,8 +3,9 @@ social
 
 social app like weixin
 
-<pre>
-<VirtualHost *:80>
+<code>
+\<VirtualHost *:80\>
+
     ServerName social.luomor.org
 
     DocumentRoot /home/zhang/dev/github/social/share/weixin/public
@@ -20,5 +21,5 @@ social app like weixin
 
     ErrorLog /var/log/apache2/social-weixin_error_log
     CustomLog /var/log/apache2/social-weixin_access_log combined
-</VirtualHost>
-</pre>
+\</VirtualHost\>
+</code>
