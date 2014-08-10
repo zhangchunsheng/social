@@ -58,3 +58,6 @@ social app like weixin
     ErrorLog /var/log/httpd/error_log
     CustomLog /var/log/httpd/access_log combined
 </VirtualHost>
+
+_default_ VirtualHost overlap on port 80, the first has precedence
+去掉#NameVirtualHost *:80前面的#号
