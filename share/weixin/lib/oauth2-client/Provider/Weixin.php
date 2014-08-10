@@ -20,17 +20,16 @@ class Weixin extends IdentityProvider {
     public $responseType = 'string';
 
     public function urlAuthorize() {
-        return 'https://graph.qq.com/oauth2.0/authorize';
+        return 'https://open.weixin.qq.com/connect/oauth2/authorize';
     }
 
     public function urlAccessToken() {
-        return 'https://graph.qq.com/oauth2.0/token';
+        return 'https://api.weixin.qq.com/sns/oauth2/access_token';
     }
 
     public function urlUserDetails(AccessToken $token) {
-        return 'https://graph.qq.com/user/get_user_info?' . http_build_query([
+        return 'https://api.weixin.qq.com/cgi-bin/user/info?' . http_build_query([
             'access_token' => $token->accessToken,
-            'oauth_consumer_key' => $this->clientId,
             'openid' => $this->getUserUid($token),
         ]);
     }
@@ -40,7 +39,7 @@ class Weixin extends IdentityProvider {
         $user = new User;
         $uid = $this->getUserUid($token);
         $name = $response['nickname'];
-        $imageUrl = (isset($response['figureurl_qq_2'])) ? $response['figureurl_qq_2'] : null;
+        $imageUrl = (isset($response['headimgurl'])) ? $response['headimgurl'] : null;
 
         $user->exchangeArray(array(
             'uid' => $uid,
@@ -52,30 +51,15 @@ class Weixin extends IdentityProvider {
     }
 
     public function getUserUid(AccessToken $token) {
-        static $response = null;
-
-        if ($response == null) {
-            $client = $this->getHttpClient();
-            $client->setBaseUrl('https://graph.qq.com/oauth2.0/me?access_token=' . $token);
-            $request = $client->get()->send();
-            if (preg_match('/callback\((.+?)\)/', $request->getBody(), $match)) {
-                $response = json_decode($match[1]);
-            }
-        }
-
-        return $this->userUid($response, $token);
+        return $this->userUid($token);
     }
 
-    public function userUid($response, AccessToken $token) {
-        $token->uid = $response->openid;
-        return $response->openid;
-    }
-
-    public function userEmail($response, AccessToken $token) {
-        return isset($response->email) && $response->email ? $response->email : null;
+    public function userUid(AccessToken $token) {
+        $token->uid = $token->openid;
+        return $token->openid;
     }
 
     public function userScreenName($response, AccessToken $token) {
-        return $response->name;
+        return $response->nickname;
     }
 }

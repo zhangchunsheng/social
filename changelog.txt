@@ -22,6 +22,9 @@
 [social_1.0.0.1 2014-08-10 张春生]
 1.新功能:增加数据库脚本
 2.新功能:更新zendframework版本
+3.新功能:修改oauth-client引用
+4.新功能:oauth-client增加微信provider
+5.新功能:调整IndexController返回json数据
 
 --备注分类
 1、新功能：
