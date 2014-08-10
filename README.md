@@ -36,6 +36,6 @@ social app like weixin
 
     DirectoryIndex index.php
 
-    ErrorLog /var/log/http/social-weixin_error_log
-    CustomLog /var/log/http/social-weixin_access_log combined
+    ErrorLog /var/log/httpd/social-weixin_error_log
+    CustomLog /var/log/httpd/social-weixin_access_log combined
 </VirtualHost>
