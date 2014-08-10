@@ -10,6 +10,6 @@
     "require": {
         "league/oauth2-client": "~0.3",
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.3.*"
+        "zendframework/zendframework": "2.2.6"
     }
 }
