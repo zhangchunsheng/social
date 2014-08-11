@@ -78,7 +78,7 @@ class IndexController extends AbstractActionController {
 
             $grant = new RefreshToken();
 
-            $token = $provider->getAccessToken($grant, [
+            $token = $provider->getAccessToken('refresh_token', [
                 'refresh_token' => $token->refreshToken,
                 'grant_type' => 'refresh_token'
             ]);
