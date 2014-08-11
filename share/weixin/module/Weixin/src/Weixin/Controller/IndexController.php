@@ -83,6 +83,8 @@ class IndexController extends AbstractActionController {
                 'grant_type' => 'refresh_token'
             ]);
 
+            print_r($token);
+
             try {
                 // We got an access token, let's now get the user's details
                 $userDetails = $provider->getUserDetails($token);
