@@ -101,16 +101,4 @@ class IndexController extends AbstractActionController {
 
         return $result;
     }
-
-    /**
-     * @return JsonModel
-     */
-    public function weixinAction() {
-        $result = new JsonModel(array(
-            'weixin' => 'some value',
-            'success' => true,
-        ));
-
-        return $result;
-    }
 }

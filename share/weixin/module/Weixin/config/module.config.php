@@ -12,10 +12,21 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Weixin\Controller\Index' => 'Weixin\Controller\IndexController',
+            'Weixin\Controller\Weixin' => 'Weixin\Controller\WeixinController',
         ),
     ),
     'router' => array(
         'routes' => array(
+            'home' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/weixin',
+                    'defaults' => array(
+                        'controller' => 'Weixin\Controller\Weixin',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             'weixin' => array(
                 'type'    => 'segment',
                 'options' => array(
