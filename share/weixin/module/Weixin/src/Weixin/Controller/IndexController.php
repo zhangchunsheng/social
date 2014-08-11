@@ -74,11 +74,11 @@ class IndexController extends AbstractActionController {
                 'code' => $_GET['code'],
                 'grant_type' => 'authorization_code'
             ]);
-            print_r($token);
-            /*$token = $provider->getAccessToken('refresh_token', [
-                'refresh_token' => $token->refresh_token,
+
+            $token = $provider->getAccessToken('refresh_token', [
+                'refresh_token' => $token->refreshToken,
                 'grant_type' => 'refresh_token'
-            ]);*/
+            ]);
 
             try {
                 // We got an access token, let's now get the user's details
