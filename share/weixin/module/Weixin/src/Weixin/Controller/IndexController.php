@@ -88,11 +88,7 @@ class IndexController extends AbstractActionController {
                 $userDetails = $provider->getUserDetails($token);
 
                 // Use these details to create a new profile
-                printf('Hello %s!', $userDetails->name);
-
-                $result = new JsonModel($userDetails->getArrayCopy());
-
-                return $result;
+                printf('<h1>Hello %s!</h1>', $userDetails->name);
             } catch (Exception $e) {
                 // Failed to get user details
                 exit('Oh dear...');
