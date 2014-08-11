@@ -37,30 +37,58 @@ class IndexController extends AbstractActionController {
                 'code' => $_GET['code'],
                 'grant_type' => 'authorization_code'
             ]);
-            // Use this to interact with an API on the users behalf
-            echo $token->accessToken;
-
-            // Use this to get a new access token if the old one expires
-            echo $token->refreshToken;
-
-            // Number of seconds until the access token will expire, and need refreshing
-            echo $token->expires;
+            header('Location: http://weixin.didiwuliu.com/snsapiUserinfo?openid=' . $token->uid);
+            exit();
         }
-        $result = new JsonModel(array(
-            'index' => 'some value',
-            'success'=>true,
-        ));
-
-        return $result;
     }
 
     /**
      * @return JsonModel
      */
     public function snsapiUserinfoAction() {
+        $openid = $_GET["openid"];
+        if(empty($openid)) {
+            $result = new JsonModel(array(
+                'ret_code' => 400,
+                'ret_message' => "invalid param",
+            ));
+
+            return $result;
+        }
+
+        $provider = new Weixin(array(
+            'clientId'  =>  'wx44d0e65f9951d33b',
+            'clientSecret'  =>  '5f1c5968f3b4978932cac17492f8da71',
+            'redirectUri'   =>  'http://weixin.didiwuliu.com/snsapiUserinfo?openid=' . $openid
+        ));
+
+        if (!isset($_GET['code'])) {
+            // If we don't have an authorization code then get one
+            header('Location: ' . $provider->getAuthorizationUrl(array(
+                "scope" => "snsapi_userinfo"
+            )));
+            exit;
+        } else {
+            // If you are using Eventbrite you will need to add the grant_type parameter (see below)
+            $token = $provider->getAccessToken('authorization_code', [
+                'code' => $_GET['code'],
+                'grant_type' => 'authorization_code'
+            ]);
+
+            try {
+                // We got an access token, let's now get the user's details
+                $userDetails = $provider->getUserDetails($token);
+
+                // Use these details to create a new profile
+                printf('Hello %s!', $userDetails->name);
+            } catch (Exception $e) {
+                // Failed to get user details
+                exit('Oh dear...');
+            }
+        }
         $result = new JsonModel(array(
-            'snsapiUserinfo' => 'some value',
-            'success'=>true,
+            'ret_code' => '200',
+            'ret_message' => '',
         ));
 
         return $result;
@@ -72,7 +100,7 @@ class IndexController extends AbstractActionController {
     public function weixinAction() {
         $result = new JsonModel(array(
             'weixin' => 'some value',
-            'success'=>true,
+            'success' => true,
         ));
 
         return $result;
