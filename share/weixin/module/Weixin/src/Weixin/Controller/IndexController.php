@@ -89,6 +89,10 @@ class IndexController extends AbstractActionController {
 
                 // Use these details to create a new profile
                 printf('<h1>Hello %s!</h1>', $userDetails->name);
+
+                $result = new JsonModel();
+
+                return $result;
             } catch (Exception $e) {
                 // Failed to get user details
                 exit('Oh dear...');
