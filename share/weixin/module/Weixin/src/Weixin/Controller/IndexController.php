@@ -13,6 +13,7 @@ namespace Weixin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
 use League\OAuth2\Client\Provider\Weixin;
+use League\OAuth2\Client\Grant\RefreshToken;
 
 class IndexController extends AbstractActionController {
     /**
@@ -75,7 +76,9 @@ class IndexController extends AbstractActionController {
                 'grant_type' => 'authorization_code'
             ]);
 
-            $token = $provider->getAccessToken('refresh_token', [
+            $grant = new RefreshToken();
+
+            $token = $provider->getAccessToken($grant, [
                 'refresh_token' => $token->refreshToken,
                 'grant_type' => 'refresh_token'
             ]);
