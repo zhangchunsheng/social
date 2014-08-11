@@ -12,49 +12,31 @@ namespace Weixin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\JsonModel;
+use League\OAuth2\Client\Provider\Weixin;
 
 class IndexController extends AbstractActionController {
+    /**
+     * @return array|JsonModel
+     */
     public function indexAction() {
-        /*$provider = new League\OAuth2\Client\Provider\Weixin(array(
-            'clientId'  =>  'XXXXXXXX',
-            'clientSecret'  =>  'XXXXXXXX',
-            'redirectUri'   =>  'https://your-registered-redirect-uri/'
+        $provider = new Weixin(array(
+            'clientId'  =>  'wx44d0e65f9951d33b',
+            'clientSecret'  =>  '5f1c5968f3b4978932cac17492f8da71',
+            'redirectUri'   =>  'http://weixin.didiwuliu.com'
         ));
 
-        if ( ! isset($_GET['code'])) {
-
+        if (!isset($_GET['code'])) {
             // If we don't have an authorization code then get one
-            header('Location: '.$provider->getAuthorizationUrl());
+            header('Location: ' . $provider->getAuthorizationUrl(array(
+                "scope" => "snsapi_base"//snsapi_userinfo
+            )));
             exit;
-
         } else {
-
-            // Try to get an access token (using the authorization code grant)
-            $token = $provider->getAccessToken('authorization_code', [
-                'code' => $_GET['code']
-            ]);
-
             // If you are using Eventbrite you will need to add the grant_type parameter (see below)
             $token = $provider->getAccessToken('authorization_code', [
                 'code' => $_GET['code'],
                 'grant_type' => 'authorization_code'
             ]);
-
-            // Optional: Now you have a token you can look up a users profile data
-            try {
-
-                // We got an access token, let's now get the user's details
-                $userDetails = $provider->getUserDetails($token);
-
-                // Use these details to create a new profile
-                printf('Hello %s!', $userDetails->firstName);
-
-            } catch (Exception $e) {
-
-                // Failed to get user details
-                exit('Oh dear...');
-            }
-
             // Use this to interact with an API on the users behalf
             echo $token->accessToken;
 
@@ -63,7 +45,7 @@ class IndexController extends AbstractActionController {
 
             // Number of seconds until the access token will expire, and need refreshing
             echo $token->expires;
-        }*/
+        }
         $result = new JsonModel(array(
             'index' => 'some value',
             'success'=>true,
@@ -72,6 +54,21 @@ class IndexController extends AbstractActionController {
         return $result;
     }
 
+    /**
+     * @return JsonModel
+     */
+    public function snsapiUserinfoAction() {
+        $result = new JsonModel(array(
+            'snsapiUserinfo' => 'some value',
+            'success'=>true,
+        ));
+
+        return $result;
+    }
+
+    /**
+     * @return JsonModel
+     */
     public function weixinAction() {
         $result = new JsonModel(array(
             'weixin' => 'some value',
