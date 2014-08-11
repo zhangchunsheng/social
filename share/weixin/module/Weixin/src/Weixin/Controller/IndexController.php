@@ -69,18 +69,18 @@ class IndexController extends AbstractActionController {
             )));
             exit;
         } else {
-            // If you are using Eventbrite you will need to add the grant_type parameter (see below)
-            $token = $provider->getAccessToken('authorization_code', [
-                'code' => $_GET['code'],
-                'grant_type' => 'authorization_code'
-            ]);
-
-            $token = $provider->getAccessToken('refresh_token', [
-                'refresh_token' => $token->refresh_token,
-                'grant_type' => 'refresh_token'
-            ]);
-
             try {
+                // If you are using Eventbrite you will need to add the grant_type parameter (see below)
+                $token = $provider->getAccessToken('authorization_code', [
+                    'code' => $_GET['code'],
+                    'grant_type' => 'authorization_code'
+                ]);
+
+                $token = $provider->getAccessToken('refresh_token', [
+                    'refresh_token' => $token->refresh_token,
+                    'grant_type' => 'refresh_token'
+                ]);
+
                 // We got an access token, let's now get the user's details
                 $userDetails = $provider->getUserDetails($token);
 
