@@ -54,7 +54,7 @@ class Message {
      */
     public function responseMsg() {
         //验证签名
-        if ($this->checkSignature()) {
+        if($this->checkSignature()) {
             $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
             $this->log_request_info();
 
