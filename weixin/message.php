@@ -59,7 +59,7 @@ class Message {
             $this->log_request_info();
 
             //提取post数据
-            if (!emptyempty($postStr)) {
+            if (!empty($postStr)) {
                 $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;//发送人
                 $toUsername = $postObj->ToUserName;//接收人
@@ -72,7 +72,7 @@ class Message {
                     $content = trim($postObj->Content);//消息内容
 
                     $resultStr = "";
-                    if(!emptyempty($content)) {
+                    if(!empty($content)) {
                         //如果文本内容是图文，则回复图文信息，否则回复文本信息
                         if($content == "图文") {
                             //回复图文消息,ArticleCount图文消息个数,多条图文消息信息，默认第一个item为大图
@@ -191,7 +191,7 @@ class Message {
                         $EventKey = $postObj->EventKey;//事件KEY值，qrscene_为前缀，后面为二维码的参数值
 
                         //未关注时，扫描二维码
-                        if(!emptyempty($EventKey)) {
+                        if(!empty($EventKey)) {
                             $Ticket = $postObj->Ticket;//二维码的ticket，可用来换取二维码图片
                             $this->log($fromUsername . '扫描二维码关注！EventKey=' . $EventKey . ',Ticket=' . $Ticket);
                         } else {
