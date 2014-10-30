@@ -99,9 +99,9 @@ class Message {
                                 </Articles>
                                 </xml>";
                             $resultStr = sprintf($newsTpl, $fromUsername, $toUsername, $time, 'news',
-                                $ArticleCount,'我是图文信息','我是描述信息','http://www.test.com/DocCenterService/image?photo_id=236',
-                                'http://www.test.com','爱城市网正式开通上线','描述2','http://jn.test.com/ac/skins/img/upload/img/20131116/48171384568991509.png',
-                                'http://www.test.com');
+                                $ArticleCount,'我是图文信息','我是描述信息','http://www.luomor.com/DocCenterService/image?photo_id=236',
+                                'http://www.luomor.com','烙馍网正式开通上线','描述2','http://jn.luomor.com/ac/skins/img/upload/img/20131116/48171384568991509.png',
+                                'http://www.luomor.com');
                             echo $resultStr;
                             $this->log($resultStr);
                         } else {
