@@ -11,8 +11,8 @@
 $code = $_GET["code"];
 $state = $_GET["state"];
 
-$appid = "wx44d0e65f9951d33b";
-$secret = "5f1c5968f3b4978932cac17492f8da71";
+$appid = "";
+$secret = "";
 $grant_type = "authorization_code";
 
 $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=$grant_type";

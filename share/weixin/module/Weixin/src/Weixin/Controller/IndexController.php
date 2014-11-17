@@ -21,8 +21,8 @@ class IndexController extends AbstractActionController {
      */
     public function indexAction() {
         $provider = new Weixin(array(
-            'clientId'  =>  'wx44d0e65f9951d33b',
-            'clientSecret'  =>  '5f1c5968f3b4978932cac17492f8da71',
+            'clientId'  =>  '',
+            'clientSecret'  =>  '',
             'redirectUri'   =>  'http://weixin.didiwuliu.com'
         ));
 
@@ -58,8 +58,8 @@ class IndexController extends AbstractActionController {
         }
 
         $provider = new Weixin(array(
-            'clientId'  =>  'wx44d0e65f9951d33b',
-            'clientSecret'  =>  '5f1c5968f3b4978932cac17492f8da71',
+            'clientId'  =>  '',
+            'clientSecret'  =>  '',
             'redirectUri'   =>  'http://weixin.didiwuliu.com/snsapiUserinfo?openid=' . $openid
         ));
 

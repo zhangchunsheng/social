@@ -9,7 +9,7 @@
  * @copyright  Copyright (c) 2010-2014 Luomor Inc. (http://www.luomor.com)
  */
 //define your token
-define("TOKEN", "ydycQAZwer1030");
+define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 
