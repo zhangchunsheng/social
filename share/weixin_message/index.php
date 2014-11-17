@@ -9,5 +9,3 @@
  * @copyright  Copyright (c) 2010-2014 Luomor Inc. (http://www.luomor.com)
  */
 include 'lanewechat/lanewechat.php';
-//获取自定义菜单列表
-$menuList = Menu::getMenu();
