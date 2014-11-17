@@ -18,8 +18,8 @@ define("WECHAT_URL", 'http://54.254.199.29');
 define('WECHAT_TOKEN', 'ydycQAZwer1030');
 define('ENCODING_AES_KEY', "MqAuKoex6FyT5No0OcpRyCicThGs0P1vz4mJ2gwvvkF");
 
-define("WECHAT_APPID", 'wx5d57f64bb4804d90');// wx44d0e65f9951d33b wx5d57f64bb4804d90
-define("WECHAT_APPSECRET", '5f1c5968f3b4978932cac17492f8da71');// 4b1fa6d9442351ec9268eff05e38f521 5f1c5968f3b4978932cac17492f8da71
+define("WECHAT_APPID", 'wx44d0e65f9951d33b');// wx44d0e65f9951d33b wx5d57f64bb4804d90
+define("WECHAT_APPSECRET", '5f1c5968f3b4978932cac17492f8da71');// 5f1c5968f3b4978932cac17492f8da71 4b1fa6d9442351ec9268eff05e38f521
 
 
 ////-----引入系统所需类库-------------------
