@@ -14,7 +14,7 @@ define('LANEWECHAT_VERSION', '1.4');
 define('LANEWECHAT_VERSION_DATE', '2014-11-05');
 
 //微信公众平台相关
-define("WECHAT_URL", 'http://www.lanecn.com');
+define("WECHAT_URL", 'http://54.254.199.29');
 define('WECHAT_TOKEN', 'weixin');
 define('ENCODING_AES_KEY', "MqAuKoex6FyT5No0OcpRyCicThGs0P1vz4mJ2gwvvkF");
 
