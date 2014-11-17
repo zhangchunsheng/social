@@ -22,33 +22,33 @@ define("WECHAT_APPID", 'wx44d0e65f9951d33b');// wx44d0e65f9951d33b wx5d57f64bb48
 define("WECHAT_APPSECRET", '5f1c5968f3b4978932cac17492f8da71');// 5f1c5968f3b4978932cac17492f8da71 4b1fa6d9442351ec9268eff05e38f521
 
 
-////-----引入系统所需类库-------------------
-////引入错误消息类
-//include_once 'core/msg.lib.php';
-////引入错误码类
-//include_once 'core/msgconstant.lib.php';
-////引入CURL类
-//include_once 'core/curl.lib.php';
-//
-////-----------引入微信所需的基本类库----------------
-////引入微信处理中心类
-//include_once 'core/wechat.lib.php';
-////引入微信请求处理类
-//include_once 'core/wechatrequest.lib.php';
-////引入微信被动响应处理类
-//include_once 'core/responsepassive.lib.php';
-////引入微信access_token类
-//include 'core/accesstoken.lib.php';
-//
-////-----如果是认证服务号，需要引入以下类--------------
-////引入微信权限管理类
-//include_once 'core/wechatoauth.lib.php';
-////引入微信用户/用户组管理类
-//include_once 'core/usermanage.lib.php';
-////引入微信主动相应处理类
-//include_once 'core/responseinitiative.lib.php';
-////引入多媒体管理类
-//include_once 'core/media.lib.php';
-////引入自定义菜单类
-//include_once 'core/menu.lib.php';
+//-----引入系统所需类库-------------------
+//引入错误消息类
+include_once 'core/msg.lib.php';
+//引入错误码类
+include_once 'core/msgconstant.lib.php';
+//引入CURL类
+include_once 'core/curl.lib.php';
+
+//-----------引入微信所需的基本类库----------------
+//引入微信处理中心类
+include_once 'core/wechat.lib.php';
+//引入微信请求处理类
+include_once 'core/wechatrequest.lib.php';
+//引入微信被动响应处理类
+include_once 'core/responsepassive.lib.php';
+//引入微信access_token类
+include 'core/accesstoken.lib.php';
+
+//-----如果是认证服务号，需要引入以下类--------------
+//引入微信权限管理类
+include_once 'core/wechatoauth.lib.php';
+//引入微信用户/用户组管理类
+include_once 'core/usermanage.lib.php';
+//引入微信主动相应处理类
+include_once 'core/responseinitiative.lib.php';
+//引入多媒体管理类
+include_once 'core/media.lib.php';
+//引入自定义菜单类
+include_once 'core/menu.lib.php';
 ?>
