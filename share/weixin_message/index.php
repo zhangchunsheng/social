@@ -11,6 +11,10 @@
 use LaneWeChat\Core\AccessToken;
 use LaneWeChat\Core\TemplateMessage;
 
+use LaneWeChat\Core\Media;
+use LaneWeChat\Core\Menu;
+use LaneWeChat\Core\AdvancedBroadcast;
+
 include 'lanewechat/lanewechat.php';
 //获取自定义菜单列表
 $menuList = \LaneWeChat\Core\Menu::getMenu();
@@ -48,5 +52,51 @@ foreach($openids as $openid) {
     $templateId = "GBCL5EoZ4-o1eieWxLD9x6mdan-z_wKNecBrPotzFb4";
     $url = "http://www.yongche.com";
 
-    TemplateMessage::sendTemplateMessage($data, $touser, $templateId, $url, $topcolor = '#FF0000');
+    //TemplateMessage::sendTemplateMessage($data, $touser, $templateId, $url, $topcolor = '#FF0000');
 }
+
+$filename = "./weixin.jpg";
+$type = "image";
+
+echo "<br/>";
+
+$result = Media::upload($filename, $type);
+print_r($result);
+/*Array
+(
+    [type] => image
+    [media_id] => UXFBYVOCGkZUb_UqRqIzhf00hEWcOghDgWDPg3FHb8ifpIaaXYK_d2Z4Eh5B9sqq
+    [created_at] => 1417856359
+)
+*/
+
+echo "<br/>";
+
+$articles = array(
+    array(
+        'thumb_media_id' => 'UXFBYVOCGkZUb_UqRqIzhf00hEWcOghDgWDPg3FHb8ifpIaaXYK_d2Z4Eh5B9sqq' ,
+        'author' => 'peter',//
+        'title' => '易到用车',
+        //'content_source_url' => 'www.yongche.com',//
+        //'digest' => 'hello',//
+        'show_cover_pic' => '1',//
+        'content' => '<a href="http://www.yongche.com">hello</a>'
+    ),
+);
+$mediaId = AdvancedBroadcast::uploadNews($articles);
+
+$toUserList = array(
+    "owQ_9ZATTZFGgt_wnsf6wOJkbg1g",//mengyao
+    "owQ_9ZJMdWFnvC4XKBForI7BySoQ",//huanhuan
+    "owQ_9ZLnybMamb4W0jgoYvpQAaiY",//郭晓东
+    "owQ_9ZA5eEtlxbtNWU8jHglOAFxk"
+);
+
+$result = AdvancedBroadcast::sentNewsByOpenId($toUserList, $mediaId);
+print_r($result);
+/*Array
+(
+    [errcode] => 0
+    [errmsg] => send job submission success
+    [msg_id] => 2349044921
+)*/
