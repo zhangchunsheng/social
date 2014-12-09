@@ -80,16 +80,18 @@ $articles = array(
         //'content_source_url' => 'www.yongche.com',//
         //'digest' => 'hello',//
         'show_cover_pic' => '1',//
-        'content' => '<a href="http://www.yongche.com">hello</a>'
+        //'content' => '<script type="text/javascript">document.location.href="http://www.yongche.com";</script>'
+        'content' => ''
     ),
 );
 $mediaId = AdvancedBroadcast::uploadNews($articles);
 
 $toUserList = array(
-    "owQ_9ZATTZFGgt_wnsf6wOJkbg1g",//mengyao
-    "owQ_9ZJMdWFnvC4XKBForI7BySoQ",//huanhuan
-    "owQ_9ZLnybMamb4W0jgoYvpQAaiY",//郭晓东
-    "owQ_9ZA5eEtlxbtNWU8jHglOAFxk"
+    //"owQ_9ZATTZFGgt_wnsf6wOJkbg1g",//mengyao
+    //"owQ_9ZJMdWFnvC4XKBForI7BySoQ",//huanhuan
+    //"owQ_9ZLnybMamb4W0jgoYvpQAaiY",//郭晓东
+    //"owQ_9ZA5eEtlxbtNWU8jHglOAFxk",
+    "owQ_9ZHyREE9s_AHBuMR9vMfRwVg",//luomor
 );
 
 $result = AdvancedBroadcast::sentNewsByOpenId($toUserList, $mediaId);
