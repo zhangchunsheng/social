@@ -47,12 +47,17 @@ $openids = array(
     "owQ_9ZA5eEtlxbtNWU8jHglOAFxk"
 );
 
+$openids = array(
+    "owQ_9ZATTZFGgt_wnsf6wOJkbg1g",//mengyao
+    "owQ_9ZHyREE9s_AHBuMR9vMfRwVg"
+);
+
 foreach($openids as $openid) {
     $touser = $openid;
     $templateId = "GBCL5EoZ4-o1eieWxLD9x6mdan-z_wKNecBrPotzFb4";
     $url = "http://www.yongche.com";
 
-    //TemplateMessage::sendTemplateMessage($data, $touser, $templateId, $url, $topcolor = '#FF0000');
+    TemplateMessage::sendTemplateMessage($data, $touser, $templateId, $url, $topcolor = '#FF0000');
 }
 
 $filename = "./weixin.jpg";
@@ -94,7 +99,7 @@ $toUserList = array(
     "owQ_9ZHyREE9s_AHBuMR9vMfRwVg",//luomor
 );
 
-$result = AdvancedBroadcast::sentNewsByOpenId($toUserList, $mediaId);
+//$result = AdvancedBroadcast::sentNewsByOpenId($toUserList, $mediaId);
 print_r($result);
 /*Array
 (
