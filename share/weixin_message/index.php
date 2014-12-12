@@ -48,14 +48,14 @@ $openids = array(
 );
 
 $openids = array(
-    "owQ_9ZATTZFGgt_wnsf6wOJkbg1g",//mengyao
-    "owQ_9ZHyREE9s_AHBuMR9vMfRwVg"
+    "owQ_9ZHyREE9s_AHBuMR9vMfRwVg",//luomor
+    "owQ_9ZJMdWFnvC4XKBForI7BySoQ"
 );
 
 foreach($openids as $openid) {
     $touser = $openid;
     $templateId = "GBCL5EoZ4-o1eieWxLD9x6mdan-z_wKNecBrPotzFb4";
-    $url = "http://www.yongche.com";
+    $url = "http://www.yongche.com?name=" . urlencode("你好");
 
     TemplateMessage::sendTemplateMessage($data, $touser, $templateId, $url, $topcolor = '#FF0000');
 }
